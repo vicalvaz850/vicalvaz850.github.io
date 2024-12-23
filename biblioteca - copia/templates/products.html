@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Administrar Productos{% endblock %}
+
+{% block content %}
+<h2>Agregar Nuevo Producto</h2>
+<form action="/add_product" method="post">
+    <input type="text" name="code" placeholder="Código del libro" required>
+    <input type="text" name="title" placeholder="Título del libro" required>
+    <input type="text" name="author" placeholder="Autor" required>
+    <input type="number" name="stock" placeholder="Stock" required>
+    <input type="number" name="price" placeholder="Precio" required>
+    <button type="submit">Agregar Producto</button>
+</form>
+
+<h3>Lista de Productos</h3>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Código</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Stock</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product[0] }}</td>
+                <td>{{ product[1] }}</td>
+                <td>{{ product[2] }}</td>
+                <td>{{ product[3] }}</td>
+                <td>{{ product[4] }}</td>
+                <td>{{ product[5] }}</td>
+                <td>
+                    <a href="/edit_product/{{ product[0] }}" class="edit-link">Editar</a>
+                    <a href="/delete_product/{{ product[0] }}" class="delete-link" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?');">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

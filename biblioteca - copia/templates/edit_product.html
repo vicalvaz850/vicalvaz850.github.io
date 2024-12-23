@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo-gato.png') }}" type="image/png"> <!-- Para logo-gato.png -->
+    <title>Editar Producto</title>
+</head>
+<body>
+    <header>
+        <h1>
+        <img src="{{ url_for('static', filename='logo-gato.png') }}" alt="Logo de la Biblioteca" style="height: 85px; vertical-align: middle; margin-right: 10px;">
+        Don Gato - Editar Producto
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('products') }}">Productos</a></li>
+                <li><a href="{{ url_for('transfers') }}">Transferencias</a></li>
+                <li><a href="{{ url_for('sales') }}">Ventas</a></li>
+                <li><a href="/logout">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Editar Producto</h2>
+        <form action="/edit_product/{{ product[0] }}" method="post">
+            <input type="text" name="code" value="{{ product[1] }}" placeholder="Código del libro" required>
+            <input type="text" name="title" value="{{ product[2] }}" placeholder="Título del libro" required>
+            <input type="text" name="author" value="{{ product[3] }}" placeholder="Autor" required>
+            <input type="number" name="stock" value="{{ product[4] }}" placeholder="Stock" required>
+            <input type="number" name="price" value="{{ product[5] }}" placeholder="Precio" required>
+            <button type="submit">Actualizar Producto</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Biblioteca - Don Gato</p>
+    </footer>
+</body>
+</html>

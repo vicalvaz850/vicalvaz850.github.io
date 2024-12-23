@@ -1,0 +1,195 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+nav {
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+main {
+    padding: 20px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input, select {
+    margin-right: 10px;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Elimina el espacio entre bordes */
+    margin: 20px 0; /* Espacio alrededor de la tabla */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Bordes de las celdas */
+    padding: 8px; /* Espaciado interno */
+    text-align: left; /* Alineación del texto */
+}
+
+th {
+    background-color: hsla(0, 0%, 11%, 0.911); /* Color de fondo para el encabezado */
+    color: white; /* Color del texto en el encabezado */
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+tr:hover {
+    background-color: #ddd; /* Color de fondo al pasar el mouse */
+}
+
+a {
+    color: #ffffff; /* Color de los enlaces */
+    text-decoration: none; /* Sin subrayado */
+}
+
+a {
+    color: #ffffff; /* Color de los enlaces */
+    text-decoration: none; /* Sin subrayado */
+}
+
+a:hover {
+    text-decoration: underline; /* Subrayado al pasar el mouse */
+}
+
+/* Estilo para los campos de entrada (input) */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%; /* Ancho completo */
+    padding: 8px; /* Espaciado interno */
+    margin: 10px 0; /* Espacio arriba y abajo */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño de fuente moderado */
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
+    background-color: white; /* Color de fondo */
+    color: #333; /* Color del texto */
+}
+
+/* Estilo para los campos de entrada (input) y select */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 40%; /* Ancho reducido (puedes ajustar este valor) */
+    padding: 5px; /* Espaciado interno */
+    margin: 5px 0; /* Espacio arriba y abajo */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño de fuente moderado */
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
+    background-color: white; /* Color de fondo */
+    color: #333; /* Color del texto */
+}
+
+/* Estilo opcional para los campos en hover */
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="number"]:hover,
+input[type="date"]:hover,
+select:hover {
+    border-color: #888; /* Cambia el color del borde al pasar el mouse */
+}
+
+/* Estilo opcional para los campos en focus */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus {
+    border-color: hsl(278, 100%, 44%); /* Cambia el color del borde al hacer foco */
+    outline: none; /* Elimina el contorno predeterminado */
+}
+
+/* Estilo para los enlaces de editar y eliminar */
+.edit-link, .delete-link {
+    color: black; /* Cambia el color a negro */
+    text-decoration: none; /* Sin subrayado */
+}
+
+.edit-link:hover, .delete-link:hover {
+    text-decoration: underline; /* Subrayado al pasar el mouse */
+}
+
+/* Estilo para los botones */
+button {
+    background-color: rgb(41, 41, 41); /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 8px 12px; /* Espaciado interno (arriba/abajo, izquierda/derecha) */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+button:hover {
+    background-color: hwb(0 60% 40%); /* Color más claro al pasar el mouse */
+}
+
+/* Estilo para el elemento select */
+select {
+    width: 30%; /* Ancho completo */
+    padding: 6px; /* Espaciado interno moderado */
+    margin: 6px 0; /* Espacio arriba y abajo */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño de fuente moderado */
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
+    background-color: white; /* Color de fondo */
+}
+
+/* Estilo opcional para el select en hover */
+select:hover {
+    border-color: #888; /* Cambia el color del borde al pasar el mouse */
+}
+/* lo de abajo */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #000000;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+

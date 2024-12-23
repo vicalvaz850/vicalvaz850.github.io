@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo-gato.png') }}" type="image/png"> <!-- Para logo-gato.png -->
+    <title>Administrar Transferencias</title>
+    <script>
+        function toggleCardFields(paymentMethod) {
+            const cardFields = document.getElementById('cardFields');
+            if (paymentMethod === 'tarjeta') {
+                cardFields.style.display = 'block';
+            } else {
+                cardFields.style.display = 'none';
+            }
+        }
+
+        function fillProductDetails() {
+            const productSelect = document.getElementById('productSelect');
+            const selectedProduct = productSelect.options[productSelect.selectedIndex];
+            document.getElementById('product_code').value = selectedProduct.getAttribute('data-code');
+            document.getElementById('stock').value = selectedProduct.getAttribute('data-stock');
+            document.getElementById('price').value = selectedProduct.getAttribute('data-price');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>
+            <img src="{{ url_for('static', filename='logo-gato.png') }}" alt="Logo de la Biblioteca" style="height: 85px; vertical-align: middle; margin-right: 10px;">
+            Don Gato
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('products') }}">Productos</a></li>
+                <li><a href="{{ url_for('transfers') }}">Transferencias</a></li>
+                <li><a href="{{ url_for('sales') }}">Ventas</a></li>
+                <li><a href="/logout">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Registrar Nueva Transferencia</h2>
+        <form action="/add_transfer" method="post">
+            <input type="text" name="client_name" placeholder="Nombre y Apellido" required>
+            <input type="text" name="dni" placeholder="DNI" required>
+            <input type="text" name="phone" placeholder="Teléfono" required>
+            <input type="email" name="email" placeholder="Gmail" required>
+            <select name="payment_method" onchange="toggleCardFields(this.value)" required>
+                <option value="efectivo">Efectivo</option>
+                <option value="transferencia">Transferencia</option>
+                <option value="tarjeta">Pago con Tarjeta</option>
+            </select>
+            <div id="cardFields" style="display:none;">
+                <input type="text" name="card_number" placeholder ="Número de Tarjeta (15 dígitos)" maxlength="15">
+                <input type="text" name="expiry_date" placeholder="Vencimiento (MM/AA)">
+                <input type="text" name="security_code" placeholder="Código de Seguridad (3 dígitos)" maxlength="3">
+            </div>
+            <input type="date" name="date" required>
+            <select id="productSelect" name="product_code" onchange="fillProductDetails()" required>
+                <option value="">Selecciona un producto</option>
+                {% for product in products %}
+                    <option value="{{ product[1] }}" data-code="{{ product[1] }}" data-stock="{{ product[4] }}" data-price="{{ product[5] }}">
+                        {{ product[2] }} - Stock: {{ product[4] }} - Precio: {{ product[5] }}
+                    </option>
+                {% endfor %}
+            </select>
+            <input type="number" id="stock" name="quantity" placeholder="Cantidad" required>
+            <input type="number" id="price" name="total_price" placeholder="Precio Total" required>
+            <button type="submit">Agregar Transferencia</button>
+        </form>
+        <h3>Lista de Transferencias</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Código del Producto</th>
+                    <th>Fecha</th>
+                    <th>Método de Pago</th>
+                    <th>Cantidad</th>
+                    <th>Precio Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transfer in transfers %}
+                    <tr>
+                        <td>{{ transfer[0] }}</td>
+                        <td>{{ transfer[1] }}</td>
+                        <td>{{ transfer[7] }}</td>
+                        <td>{{ transfer[6] }}</td>
+                        <td>{{ transfer[5] }}</td>
+                        <td>{{ transfer[8] }}</td>
+                        <td>{{ transfer[9] }}</td>
+                        <td>
+                            <a href="/edit_transfer/{{ transfer[0] }}" class="edit-link">Editar</a>
+                            <a href="/delete_transfer/{{ transfer[0] }}" class="delete-link" onclick="return confirm('¿Estás seguro de que deseas eliminar esta transferencia?');">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2024 Biblioteca - Don Gato</p>
+    </footer>
+</body>
+</html>

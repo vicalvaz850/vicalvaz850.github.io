@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo-gato.png') }}" type="image/png"> <!-- Para logo-gato.png -->
+    <title>{% block title %}Biblioteca Don Gato{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>
+            <img src="{{ url_for('static', filename='logo-gato.png') }}" alt="Logo de la Biblioteca" style="height: 85px; vertical-align: middle; margin-right: 10px;">
+            Don Gato
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('products') }}">Productos</a></li>
+                <li><a href="{{ url_for('transfers') }}">Transferencias</a></li>
+                <li><a href="{{ url_for('sales') }}">Ventas</a></li>
+                <li><a href="/logout">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Biblioteca - Don Gato</p>
+    </footer>
+</body>
+</html>

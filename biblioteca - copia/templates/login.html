@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}"> <!-- Enlaza el CSS específico para el login -->
+    <link rel="icon" href="{{ url_for('static', filename='logo-gato.png') }}" type="image/png"> <!-- Para logo-gato.png -->
+    <title>Inicio de Sesión</title>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Bienvenido a la Biblioteca - Don Gato 2.0</h1>
+        <img src="{{ url_for('static', filename='logo-gato.png') }}" alt="Logo de la Biblioteca" style="height: 85px; vertical-align: middle; margin-right: 10px;">
+        <p>Por favor acceda al sistema</p>
+        <form action="/login" method="post">
+            <input type="email" name="email" placeholder="Gmail" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
+</body>
+</html>

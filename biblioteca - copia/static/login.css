@@ -1,0 +1,55 @@
+/* login.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: hsl(0, 0%, 21%); /* Color de fondo suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    margin: 0;
+}
+
+.login-container {
+    background-color: white; /* Fondo blanco para el contenedor */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 300px; /* Ancho fijo */
+    text-align: center; /* Centrar texto */
+}
+
+h1 {
+    margin-bottom: 15px; /* Espacio debajo del título */
+    color: #333; /* Color del texto */
+}
+
+p {
+    margin-bottom: 20px; /* Espacio debajo del párrafo */
+    color: #666; /* Color del texto */
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    margin: 10px 0; /* Espacio arriba y abajo */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
+}
+
+button {
+    background-color: rgb(41, 41, 41); /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+button:hover {
+    background-color: hwb(0 60% 40%); /* Color más claro al pasar el mouse */
+}

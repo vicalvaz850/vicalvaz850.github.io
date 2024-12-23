@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo-gato.png') }}" type="image/png"> <!-- Para logo-gato.png -->
+    <title>Editar Transferencia</title>
+    <script>
+        function toggleCardFields(paymentMethod) {
+            const cardFields = document.getElementById('cardFields');
+            if (paymentMethod === 'tarjeta') {
+                cardFields.classList.remove('hide');
+                cardFields.classList.add('show');
+            } else {
+                cardFields.classList.remove('show');
+                cardFields.classList.add('hide');
+            }
+        }
+
+        // Llama a la función al cargar la página para establecer el estado correcto
+        window.onload = function() {
+            toggleCardFields('{{ transfer[5] }}'); // Asegúrate de que transfer[5] contenga el método de pago actual
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <h1>
+            <img src="{{ url_for('static', filename='logo-gato.png') }}" alt="Logo de la Biblioteca" style="height: 85px; vertical-align: middle; margin-right: 10px;">
+            Don Gato - Editar Transferencia
+            </h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('products') }}">Productos</a></li>
+                <li><a href="{{ url_for('transfers') }}">Transferencias</a></li>
+                <li><a href="{{ url_for('sales') }}">Ventas</a></li>
+                <li><a href="/logout">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Editar Transferencia</h2>
+        <form action="/edit_transfer/{{ transfer[0] }}" method="post">
+            <input type="text" name="client_name" value="{{ transfer[1] }}" placeholder="Nombre y Apellido" required>
+            <input type="text" name="dni" value="{{ transfer[2] }}" placeholder="DNI" required>
+            <input type="text" name="phone" value="{{ transfer[3] }}" placeholder="Teléfono" required>
+            <input type="email" name="email" value="{{ transfer[4] }}" placeholder="Gmail" required>
+            <select name="payment_method" onchange="toggleCardFields(this.value)" required>
+                <option value="efectivo" {% if transfer[5] == 'efectivo' %}selected{% endif %}>Efectivo</option>
+                <option value="transferencia" {% if transfer[5] == 'transferencia' %}selected{% endif %}>Transferencia</option>
+                <option value="tarjeta" {% if transfer[5] == 'tarjeta' %}selected{% endif %}>Pago con Tarjeta</option>
+            </select>
+            <div id="cardFields" class="{% if transfer[5] == 'tarjeta' %}show{% else %}hide{% endif %}">
+                <input type="text" name="card_number" placeholder="Número de Tarjeta (15 dígitos)" maxlength="15">
+                <input type="text" name="expiry_date" placeholder="Vencimiento (MM/AA)">
+                <input type="text" name="security_code" placeholder="Código de Seguridad (3 dígitos)" maxlength="3">
+            </div>
+            <input type="date" name="date" value="{{ transfer[6] }}" required>
+            <input type="number" name="quantity" value="{{ transfer[8] }}" placeholder="Cantidad" required>
+            <input type="number" name="total_price" value="{{ transfer[9] }}" placeholder="Precio Total" required>
+            <button type="submit">Actualizar Transferencia</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Biblioteca - Don Gato</p>
+    </footer>
+</body>
+</html>

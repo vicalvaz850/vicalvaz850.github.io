@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Administrar Ventas{% endblock %}
+
+{% block content %}
+<h2>Registrar Nueva Venta</h2>
+<form action="/add_sale" method="post">
+    <select name="transfer_id" id="transferSelect" required>
+        <option value="">Selecciona una transferencia</option>
+        {% for transfer in transfers %}
+            <option value="{{ transfer[0] }}">{{ transfer[1] }} - Fecha: {{ transfer[6] }} - Total: {{ transfer[9] }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Registrar Venta</button>
+</form>
+<h3>Lista de Ventas</h3>
+<p>Total Acumulado: {{ total_sales }}</p>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Código</th>
+            <th>Comprador</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sale in sales %}
+            <tr>
+                <td>{{ sale[0] }}</td>
+                <td>{{ sale[1] }}</td>
+                <td>{{ sale[2] }}</td>
+                <td>{{ sale[3] }}</td>
+                <td>{{ sale[4] }}</td>
+                <td>{{ sale[5] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
